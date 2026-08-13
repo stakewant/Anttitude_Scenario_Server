@@ -40,42 +40,23 @@ def _fallback_explanation(material: dict) -> str:
     """LLM 없이 규칙 재료만으로 만드는 결정론적 피드백."""
     good = material.get("good_points", [])
     missed = material.get("missed_points", [])
-    baseline = str(
-        material.get("ai_baseline", "")
-    ).strip()
-
+    baseline = str(material.get("ai_baseline", "")).strip()
     sentences = []
 
     if good:
-        sentences.append(
-            f"잘 본 점은 다음과 같습니다. {good[0]}"
-        )
+        sentences.append(f"잘 본 점은 다음과 같습니다. {good[0]}")
     else:
-        sentences.append(
-            "이번 판단에서는 기준표의 핵심 요인을 "
-            "충분히 짚지 못했습니다."
-        )
+        sentences.append("이번 판단에서는 기준표의 핵심 요인을 충분히 짚지 못했습니다.")
 
     if missed:
-        sentences.append(
-            f"보완할 점은 다음과 같습니다. {missed[0]}"
-        )
+        sentences.append(f"보완할 점은 다음과 같습니다. {missed[0]}")
     elif good:
-        sentences.append(
-            "규칙 채점에서 추가로 확인된 주요 누락이나 "
-            "함정은 없습니다."
-        )
+        sentences.append("규칙 채점에서 추가로 확인된 주요 누락이나 함정은 없습니다.")
 
     if baseline:
-        sentences.append(
-            f"다음 판단에서는 다음 기준을 참고해 보세요. "
-            f"{baseline}"
-        )
+        sentences.append(f"다음 판단에서는 다음 기준을 참고해 보세요. {baseline}")
     else:
-        sentences.append(
-            "다음 판단에서는 상황의 핵심 요인과 위험을 "
-            "함께 확인해 보세요."
-        )
+        sentences.append("다음 판단에서는 상황의 핵심 요인과 위험을 함께 확인해 보세요.")
 
     return " ".join(sentences)
 
@@ -87,17 +68,11 @@ def generate_feedback(
     use_llm: bool = True,
 ) -> dict:
     """잘 본 점, 놓친 점, 해설을 같은 형식으로 반환한다."""
-    good = list(
-        material.get("good_points", [])
-    )
-    missed = list(
-        material.get("missed_points", [])
-    )
-
+    good = list(material.get("good_points", []))
+    missed = list(material.get("missed_points", []))
     fallback = _fallback_explanation(material)
 
-    # 빈 서술 테스트나 호출 제한 상황에서는
-    # 피드백 LLM을 아예 사용하지 않는다.
+    # 빈 서술 테스트나 호출 제한 상황에서는 LLM을 아예 사용하지 않는다.
     if not use_llm:
         return {
             "good_points": good,
@@ -107,22 +82,10 @@ def generate_feedback(
 
     prompt = _PROMPT.format(
         turn_context=turn_context,
-        good_summary=(
-            "\n".join(f"- {item}" for item in good)
-            or "(없음)"
-        ),
-        missed_summary=(
-            "\n".join(f"- {item}" for item in missed)
-            or "(없음)"
-        ),
-        ai_baseline=material.get(
-            "ai_baseline",
-            "",
-        ),
-        score_summary=material.get(
-            "score_summary",
-            "",
-        ),
+        good_summary="\n".join(f"- {item}" for item in good) or "(없음)",
+        missed_summary="\n".join(f"- {item}" for item in missed) or "(없음)",
+        ai_baseline=material.get("ai_baseline", ""),
+        score_summary=material.get("score_summary", ""),
     )
 
     result = generate_json(
@@ -136,7 +99,6 @@ def generate_feedback(
         explanation = fallback
     else:
         value = result.data.get("explanation")
-
         if isinstance(value, str) and value.strip():
             explanation = value.strip()
         else:

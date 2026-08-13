@@ -49,22 +49,15 @@ def score_freetext(
         )
 
     objective_lines = []
-
     for answer in objective_answers:
         selected = answer.get("selected", [])
-
         if not selected:
             continue
-
         objective_lines.append(
             f"- {answer.get('question_id', '')}: {', '.join(selected)}"
         )
 
-    objective_summary = (
-        "\n".join(objective_lines)
-        or "(선택한 객관식 답 없음)"
-    )
-
+    objective_summary = "\n".join(objective_lines) or "(선택한 객관식 답 없음)"
     prompt = _PROMPT.format(
         turn_context=turn_context,
         objective_summary=objective_summary,
@@ -90,14 +83,10 @@ def score_freetext(
                     evidence="모든 M5 채점 모델 호출에 실패함",
                 )
             ],
-            reason=(
-                "LLM을 사용할 수 없어 M5를 "
-                "임시 중립 점수로 표시했습니다."
-            ),
+            reason="LLM을 사용할 수 없어 M5를 임시 중립 점수로 표시했습니다.",
         )
 
     data = result.data
-
     try:
         score = float(data["score"])
     except (TypeError, ValueError):
@@ -111,24 +100,14 @@ def score_freetext(
                     evidence="M5 점수가 숫자 형식이 아님",
                 )
             ],
-            reason=(
-                "M5 채점 응답 형식이 잘못되어 "
-                "임시 중립 점수로 표시했습니다."
-            ),
+            reason="M5 채점 응답 형식이 잘못되어 임시 중립 점수로 표시했습니다.",
         )
 
-    score = round(
-        max(1.0, min(5.0, score)),
-        2,
-    )
-
-    reason = str(
-        data.get("reason", "")
-    ).strip()
-
+    score = round(max(1.0, min(5.0, score)), 2)
+    reason = str(data.get("reason", "")).strip()
     consistent = data.get("consistent")
-    penalties = []
 
+    penalties = []
     if consistent is False:
         penalties.append(
             Penalty(
@@ -137,7 +116,6 @@ def score_freetext(
                 evidence="객관식 답과 자유서술이 직접 충돌함",
             )
         )
-
     elif not isinstance(consistent, bool):
         penalties.append(
             Penalty(

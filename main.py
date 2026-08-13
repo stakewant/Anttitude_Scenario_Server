@@ -9,17 +9,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from routes import scenario_scoring
+from routes import mypage, scenario_play, scenario_scoring
+from data.store import get_store
 
 
 logger = logging.getLogger(__name__)
 app = FastAPI(title="Anttitude Scenario Server")
 
 
-def error_response(
-    message: str,
-    status_code: int,
-) -> JSONResponse:
+def error_response(message: str, status_code: int) -> JSONResponse:
     return JSONResponse(
         status_code=status_code,
         content={
@@ -69,17 +67,12 @@ async def http_error_handler(
 ):
     if exc.status_code == status.HTTP_404_NOT_FOUND:
         message = "요청한 주소를 찾을 수 없습니다."
-
     elif isinstance(exc.detail, str):
         message = exc.detail
-
     else:
         message = "요청을 처리할 수 없습니다."
 
-    return error_response(
-        message,
-        exc.status_code,
-    )
+    return error_response(message, exc.status_code)
 
 
 @app.exception_handler(Exception)
@@ -92,7 +85,6 @@ async def unexpected_error_handler(
         request.method,
         request.url.path,
     )
-
     return error_response(
         "서버에서 일시적인 오류가 발생했습니다.",
         status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -108,15 +100,23 @@ app.add_middleware(
 )
 
 app.include_router(scenario_scoring.router)
+app.include_router(scenario_play.router)
+app.include_router(mypage.router)
 
 
 @app.get("/")
 def health():
+    database = "connected"
+    try:
+        get_store().ping()
+    except Exception:
+        database = "unavailable"
     return {
         "status": "ok",
         "data": {
             "service": "Anttitude Scenario Server",
             "state": "running",
+            "database": database,
         },
         "message": "",
     }

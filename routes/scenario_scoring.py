@@ -44,10 +44,7 @@ def ok(data):
     }
 
 
-def error(
-    message: str,
-    status_code: int = status.HTTP_400_BAD_REQUEST,
-):
+def error(message: str, status_code: int = status.HTTP_400_BAD_REQUEST):
     return JSONResponse(
         status_code=status_code,
         content={
@@ -60,16 +57,14 @@ def error(
 
 @router.post("/scenario/{sid}/turn/{tno}/score")
 def score(sid: str, tno: int, body: DecisionIn):
-    # 1. 턴 기준표 조회
+    # 1. 서버에 저장된 턴 기준표 조회
     try:
         rubric = repo.get_rubric(sid, tno)
-
     except FileNotFoundError:
         return error(
             f"시나리오/턴을 찾을 수 없습니다: {sid} turn {tno}",
             status.HTTP_404_NOT_FOUND,
         )
-
     except (OSError, json.JSONDecodeError):
         logger.exception(
             "턴 기준표 조회 실패: scenario=%s, turn=%s",
@@ -81,7 +76,7 @@ def score(sid: str, tno: int, body: DecisionIn):
             status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
-    # 2. API 입력을 채점 엔진 입력 타입으로 변환
+    # 2. API 입력을 채점 엔진의 입력 타입으로 변환
     try:
         decision = UserDecision(
             scenario_id=sid,
@@ -104,23 +99,19 @@ def score(sid: str, tno: int, body: DecisionIn):
                 for answer in body.answers
             ],
         )
-
     except ValueError:
-        allowed_actions = ", ".join(
-            action.value for action in Action
-        )
+        allowed_actions = ", ".join(action.value for action in Action)
         return error(
             f"action은 다음 값 중 하나여야 합니다: {allowed_actions}",
             status.HTTP_400_BAD_REQUEST,
         )
 
-    # 3. 채점 및 표준 응답 반환
+    # 3. 채점 및 응답 변환
     try:
         card = engine.score_turn(decision, rubric)
         return ok(asdict(card))
-
     except Exception:
-        # 내부 예외나 사용자 입력 내용은 응답에 노출하지 않는다.
+        # 예외 내용이나 사용자 입력은 응답에 노출하지 않는다.
         logger.exception(
             "턴 채점 실패: scenario=%s, turn=%s",
             sid,

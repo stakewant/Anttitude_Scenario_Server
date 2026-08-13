@@ -55,17 +55,17 @@
   ],
 
   "assets": [
-    {"asset_id": "SK_HYNIX",  "relevance": "매우높음", "is_trap": false, "reason": "HBM 직접 수혜(메모리 대표)"},
-    {"asset_id": "SAMSUNG",   "relevance": "높음",     "is_trap": false, "reason": "메모리 업황·HBM 관련"},
-    {"asset_id": "SEMI_ETF",  "relevance": "높음",     "is_trap": false, "reason": "섹터 전체 수혜(리스크 분산)"},
-    {"asset_id": "TRAP_AI_SW","relevance": "중간",     "is_trap": true,  "reason": "AI 테마로 묶이나 이번 HBM(메모리) 뉴스의 직접 수혜는 아님"},
-    {"asset_id": "HYUNDAI",   "relevance": "낮음",     "is_trap": false, "reason": "이번 뉴스와 직접 관련 없음"},
-    {"asset_id": "GOLD_ETF",  "relevance": "낮음",     "is_trap": false, "reason": "무관"}
+    {"asset_id": "000660",  "relevance": "매우높음", "is_trap": false, "reason": "HBM 직접 수혜(메모리 대표)"},
+    {"asset_id": "005930",   "relevance": "높음",     "is_trap": false, "reason": "메모리 업황·HBM 관련"},
+    {"asset_id": "091160",  "relevance": "높음",     "is_trap": false, "reason": "섹터 전체 수혜(리스크 분산)"},
+    {"asset_id": "080220","relevance": "중간",     "is_trap": true,  "reason": "AI 테마로 묶이나 이번 HBM(메모리) 뉴스의 직접 수혜는 아님"},
+    {"asset_id": "005380",   "relevance": "낮음",     "is_trap": false, "reason": "이번 뉴스와 직접 관련 없음"},
+    {"asset_id": "132030",  "relevance": "낮음",     "is_trap": false, "reason": "무관"}
   ],
 
   "traps": [
     {"trap_id": "TRAP_FACTOR_GOLD", "kind": "factor", "target": "금리/환율/원자재", "explanation": "이번 턴은 HBM 메모리 이슈. 금리·환율 등 거시요인은 이 턴 핵심이 아님."},
-    {"trap_id": "TRAP_ASSET_AISW",  "kind": "asset",  "target": "TRAP_AI_SW", "explanation": "AI 반도체로 묶여 관련돼 보이나, 이번 뉴스는 메모리(HBM) 공급 이슈라 직접 수혜는 SK하이닉스·삼성전자."},
+    {"trap_id": "TRAP_ASSET_AISW",  "kind": "asset",  "target": "080220", "explanation": "AI 반도체로 묶여 관련돼 보이나, 이번 뉴스는 메모리(HBM) 공급 이슈라 직접 수혜는 SK하이닉스·삼성전자."},
     {"trap_id": "TRAP_ACTION_CHASE","kind": "action", "target": "전량/대부분 대응", "explanation": "이미 상승+밸류부담 상태에서 강한 추격매수는 위험. 분할/단계적 대응이 적절."}
   ],
 
@@ -77,8 +77,8 @@
   "action_rule": {
     "max_single_weight": 40,
     "good_cash_min": 20,
-    "trap_assets": ["TRAP_AI_SW"],
-    "core_assets": ["SK_HYNIX", "SAMSUNG", "SEMI_ETF"],
+    "trap_assets": ["080220"],
+    "core_assets": ["000660", "005930", "091160"],
     "expected_intensity": "일부/단계적",
     "expected_action_score": [0, 1.5],
     "note": "이미 상승+밸류부담. 한 종목 40% 초과는 몰빵, 현금 20%↓는 위험 과다. 함정주 매수 감점, 핵심주 적정 비중 가점."
