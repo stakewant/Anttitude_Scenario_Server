@@ -1,0 +1,28 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# IDE
+.idea/
+.vscode/
+
+# Test and coverage
+.coverage
+htmlcov/
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,154 @@
+{
+  "scenario_id": "semiconductor",
+  "turn_no": 1,
+  "turn_title": "AI 서버 투자 확대 발표",
+  "turn_context": "대형 IT 기업들이 AI 서버에 대규모 투자를 하겠다고 발표. 기대감이 형성되는 초기 단계로, 아직 실적이나 구체적 성과는 나오지 않았다. 주가는 이제 막 반응하기 시작. 기대가 실현될지 불확실한 상황.",
+
+  "questions_used": ["Q1", "Q4", "Q18", "Q38", "Q36", "Q39"],
+
+  "answer_rules": {
+    "Q1": {
+      "metric": "M1",
+      "good": ["시장 수급", "투자 심리", "경쟁 구도"],
+      "trap": ["실적", "재무상태", "현금흐름"],
+      "note": "아직 실적이 안 나온 기대 단계. 수급·심리·산업 구도가 핵심. '실적/재무'를 근거로 보는 건 성급함(함정)."
+    },
+    "Q4": {
+      "metric": "M2",
+      "good": ["일부 새로운 정보", "기존 예상과 유사"],
+      "trap": ["완전히 새로운 정보"],
+      "note": "AI 투자 기대는 이미 시장에 어느 정도 알려진 흐름. '완전히 새로운 정보'로 과대평가하면 기대 과열(함정)."
+    },
+    "Q18": {
+      "metric": "M3",
+      "good": ["정보 부족", "영향 기간 불명"],
+      "trap": ["피해 규모 불명", "정책 대응 불명"],
+      "note": "아직 실적이나 구체적 성과가 없어 정보가 부족하고 기대의 지속 기간도 불명확하다. 피해 규모나 정책 대응은 이번 기대 형성 국면의 핵심 불확실성이 아니다."
+    },
+    "Q38": {
+      "metric": "M4",
+      "good": ["실적 발표", "공식 발표", "가격 흐름"],
+      "trap": ["추가 뉴스"],
+      "note": "기대 단계에선 실적·공식 발표 등 실체를 확인하며 지켜보는 것이 핵심이다. 근거 없는 추가 뉴스만 좇으면 소문에 흔들릴 수 있다."
+    },
+    "Q36": {
+      "metric": "M4",
+      "good": ["매우 제한적", "일부 대응", "단계적 대응"],
+      "trap": ["전량 대응", "대부분 대응"],
+      "note": "실체 없는 기대 단계라 소량 매수나 관망이 적절하다. 기대만으로 전량 또는 대부분 대응하는 것은 성급한 집중 투자다."
+    },
+    "Q39": {
+      "metric": "M5",
+      "type": "free",
+      "note": "기대의 근거와 불확실성을 함께 언급하며 신중한 태도를 보이면 고득점. 무조건 오른다는 낙관만 제시하면 감점."
+    }
+  },
+
+  "factors": [
+    {
+      "factor_id": "AI_INVEST_EXPECT",
+      "importance": "상",
+      "direction": "호재",
+      "note": "AI 서버 투자 기대. 이번 턴의 핵심이나 아직 기대 단계"
+    },
+    {
+      "factor_id": "MARKET_SENTIMENT",
+      "importance": "상",
+      "direction": "호재",
+      "note": "투자 심리와 수급이 초기 주가를 움직임"
+    },
+    {
+      "factor_id": "EXPECT_UNCERTAIN",
+      "importance": "중",
+      "direction": "악재",
+      "note": "기대가 실현되지 않을 불확실성"
+    },
+    {
+      "factor_id": "EARNINGS_NOW",
+      "importance": "상관없음",
+      "direction": "중립",
+      "note": "아직 실적이 나오지 않아 실적을 근거로 판단하기 어려움"
+    },
+    {
+      "factor_id": "INTEREST_RATE",
+      "importance": "하",
+      "direction": "악재",
+      "note": "이번 턴의 핵심 요인은 아님"
+    }
+  ],
+
+  "assets": [
+    {
+      "asset_id": "SK_HYNIX",
+      "relevance": "높음",
+      "is_trap": false,
+      "reason": "AI 서버 투자 확대에 따른 메모리 수요 증가 기대"
+    },
+    {
+      "asset_id": "SAMSUNG",
+      "relevance": "높음",
+      "is_trap": false,
+      "reason": "AI 인프라 및 메모리 반도체 관련 종목"
+    },
+    {
+      "asset_id": "SEMI_ETF",
+      "relevance": "매우높음",
+      "is_trap": false,
+      "reason": "기대 형성 초기에는 개별주보다 섹터 분산에 적합"
+    },
+    {
+      "asset_id": "TRAP_AI_SW",
+      "relevance": "중간",
+      "is_trap": true,
+      "reason": "AI 테마로 묶이지만 서버 투자 확대의 직접적인 수혜 종목은 아님"
+    },
+    {
+      "asset_id": "HYUNDAI",
+      "relevance": "낮음",
+      "is_trap": false,
+      "reason": "이번 사건과 직접적인 관련이 낮음"
+    },
+    {
+      "asset_id": "GOLD_ETF",
+      "relevance": "낮음",
+      "is_trap": false,
+      "reason": "이번 사건과 직접적인 관련이 낮음"
+    }
+  ],
+
+  "traps": [
+    {
+      "trap_id": "TRAP_FACTOR_EARNINGS",
+      "kind": "factor",
+      "target": "실적/재무",
+      "explanation": "아직 실적이 나오지 않은 기대 단계에서 실적을 근거로 삼는 것은 성급한 판단이다."
+    },
+    {
+      "trap_id": "TRAP_ACTION_ALLIN",
+      "kind": "action",
+      "target": "전량/대부분 대응",
+      "explanation": "구체적인 성과가 확인되지 않은 상태에서 큰 비중을 투자하는 것은 위험하다."
+    },
+    {
+      "trap_id": "TRAP_INFO_NEW",
+      "kind": "info",
+      "target": "완전히 새로운 정보",
+      "explanation": "AI 투자 확대 기대는 이미 알려진 흐름이므로 완전히 새로운 정보로 평가하면 호재를 과대평가할 수 있다."
+    }
+  ],
+
+  "ai_baseline": {
+    "action_summary": "반도체 ETF 또는 대표주를 소량 분산 매수하고 현금을 충분히 유지",
+    "rationale": "AI 투자 확대 기대는 긍정적이지만 아직 구체적인 실적이 확인되지 않았다. 초기에는 소량·분산으로 참여하고 이후 공식 발표와 실적을 확인하는 것이 적절하다."
+  },
+
+  "action_rule": {
+    "max_single_weight": 25,
+    "good_cash_min": 50,
+    "trap_assets": ["TRAP_AI_SW"],
+    "core_assets": ["SEMI_ETF", "SK_HYNIX", "SAMSUNG"],
+    "expected_intensity": "매우 제한적/일부",
+    "expected_action_score": [0, 1.0],
+    "note": "기대 형성 초기 단계이므로 관망부터 일부 매수까지가 적정하다. 단일 종목의 비중은 25% 이하로 제한하고 현금은 50% 이상 유지하는 것이 적절하다."
+  }
+}

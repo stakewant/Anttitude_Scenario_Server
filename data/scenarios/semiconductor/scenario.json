@@ -1,0 +1,57 @@
+{
+  "scenario_id": "semiconductor",
+  "title": "AI 반도체 랠리 — 좋은 뉴스에 올라타는 법",
+  "description": "AI 반도체 붐 속에서, 호재가 이미 반영됐는지까지 판단하는 6턴 시나리오",
+  "total_turns": 6,
+  "difficulty": "중",
+  "simulation": {
+    "timezone": "Asia/Seoul",
+    "currency": "KRW",
+    "initial_cash": 10000000,
+    "execution_price_basis": "close",
+    "valuation_price_basis": "close"
+  },
+  "turns": [
+    {
+      "turn_no": 1,
+      "market_date": "2024-02-02",
+      "title": "AI 서버 투자 확대 (기대 형성)"
+    },
+    {
+      "turn_no": 2,
+      "market_date": "2024-02-22",
+      "title": "엔비디아 실적 호조, 관련주 급등 (추격매수 경계)"
+    },
+    {
+      "turn_no": 3,
+      "market_date": "2024-03-19",
+      "title": "HBM 공급 부족, 메모리 강세"
+    },
+    {
+      "turn_no": 4,
+      "market_date": "2024-04-19",
+      "title": "금리 인하 지연 우려, 기술주 조정"
+    },
+    {
+      "turn_no": 5,
+      "market_date": "2024-05-23",
+      "title": "단기 과열 논란, 변동성 확대"
+    },
+    {
+      "turn_no": 6,
+      "market_date": "2024-07-01",
+      "title": "투자 지속 발표, 선별적 반등"
+    }
+  ],
+  "final_valuation": {
+    "market_date": "2024-07-19",
+    "has_decision": false,
+    "has_scoring": false,
+    "description": "턴 6 주문을 반영한 보유자산을 종가 기준으로 재평가하여 최종 수익률을 확정한다."
+  },
+  "learning_points": [
+    "뉴스의 직접 수혜 종목과 관련 있어 보이는 함정 종목 구분하기",
+    "호재가 이미 주가에 반영됐는지 판단하기",
+    "호재와 밸류에이션 부담을 함께 고려하는 균형 잡힌 판단"
+  ]
+}

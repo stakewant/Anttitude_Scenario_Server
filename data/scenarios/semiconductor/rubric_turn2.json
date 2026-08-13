@@ -1,0 +1,154 @@
+{
+  "scenario_id": "semiconductor",
+  "turn_no": 2,
+  "turn_title": "엔비디아 실적 호조, 관련주 급등",
+  "turn_context": "엔비디아가 예상을 뛰어넘는 실적을 발표하며 AI 반도체 관련주가 일제히 급등했다. 1턴의 기대가 실적으로 확인된 셈이다. 다만 주가는 이미 크게 오른 직후여서 뒤늦게 진입하는 추격매수의 위험이 큰 국면이다.",
+
+  "questions_used": ["Q1", "Q7", "Q10", "Q16", "Q31", "Q39"],
+
+  "answer_rules": {
+    "Q1": {
+      "metric": "M1",
+      "good": ["실적", "시장 수급", "가격 수준"],
+      "trap": ["투자 심리", "규제 변화"],
+      "note": "이번 급등은 실적으로 확인된 호재다. 실적·수급·현재 가격 수준이 핵심이며, 남들이 매수한다는 투자 심리만 좇으면 추격매수 함정에 빠질 수 있다."
+    },
+    "Q7": {
+      "metric": "M2",
+      "good": ["보통", "강함"],
+      "trap": ["매우 강함"],
+      "note": "실적 호재의 영향은 강하지만 이미 주가가 크게 올랐다. 앞으로도 영향이 매우 강할 것으로 단정하면 호재를 과대평가할 수 있다."
+    },
+    "Q10": {
+      "metric": "M2",
+      "good": ["수급 변화", "심리 변화"],
+      "trap": ["정책 변화", "경로 불명확"],
+      "note": "엔비디아의 호실적은 관련 업종에 대한 수급 유입과 투자 심리 개선을 통해 국내 반도체 종목에 전달된다. 정책 변화나 불명확한 경로로 해석하면 이번 상승의 전달 구조를 놓친 것이다."
+    },
+    "Q16": {
+      "metric": "M3",
+      "good": ["보통", "높음"],
+      "trap": ["매우 낮음"],
+      "note": "관련 종목이 함께 급등했기 때문에 이후 조정과 변동성이 다른 종목이나 업종으로 확산될 가능성이 있다. 이를 매우 낮게 보면 급등 이후의 위험을 과소평가한 것이다."
+    },
+    "Q31": {
+      "metric": "M4",
+      "good": ["미보유", "소액 보유", "보통 비중"],
+      "trap": ["높은 비중", "집중 보유"],
+      "note": "급등 직후에는 보유 비중에 따라 대응이 달라져야 한다. 이미 높은 비중이나 집중 보유 상태인데 추가 매수하면 추격매수 위험이 커진다."
+    },
+    "Q39": {
+      "metric": "M5",
+      "type": "free",
+      "note": "실적 호조를 긍정적으로 평가하면서도 이미 급등한 가격과 추격매수 위험을 함께 언급하면 고득점. 지금이라도 무조건 사야 한다는 FOMO 논리는 감점."
+    }
+  },
+
+  "factors": [
+    {
+      "factor_id": "NVIDIA_EARNINGS",
+      "importance": "상",
+      "direction": "호재",
+      "note": "엔비디아의 호실적이 AI 반도체 수요를 실증한 이번 급등의 핵심 근거"
+    },
+    {
+      "factor_id": "PRICE_SURGE",
+      "importance": "상",
+      "direction": "악재",
+      "note": "주가가 이미 급등해 추격매수 시 고점 매수 위험이 존재"
+    },
+    {
+      "factor_id": "SUPPLY_DEMAND",
+      "importance": "중",
+      "direction": "호재",
+      "note": "외국인과 기관의 관련 종목 수급 유입"
+    },
+    {
+      "factor_id": "FOMO_SENTIMENT",
+      "importance": "상관없음",
+      "direction": "중립",
+      "note": "남들이 매수한다는 이유만으로 따라가는 심리는 투자 근거가 아님"
+    },
+    {
+      "factor_id": "REGULATION",
+      "importance": "하",
+      "direction": "중립",
+      "note": "이번 턴의 핵심 요인은 아님"
+    }
+  ],
+
+  "assets": [
+    {
+      "asset_id": "SK_HYNIX",
+      "relevance": "높음",
+      "is_trap": false,
+      "reason": "AI 반도체와 HBM 수요 확대의 직접적인 수혜가 기대되지만 이미 주가가 급등한 상태"
+    },
+    {
+      "asset_id": "SAMSUNG",
+      "relevance": "높음",
+      "is_trap": false,
+      "reason": "AI 반도체 관련 수혜가 기대되지만 급등 직후의 추격 위험이 존재"
+    },
+    {
+      "asset_id": "SEMI_ETF",
+      "relevance": "매우높음",
+      "is_trap": false,
+      "reason": "급등 국면에서 개별 종목 추격보다 분산된 방식으로 접근 가능"
+    },
+    {
+      "asset_id": "TRAP_AI_SW",
+      "relevance": "중간",
+      "is_trap": true,
+      "reason": "AI 테마로 가장 크게 올랐지만 엔비디아 실적의 직접적인 수혜가 불분명하고 추격 위험이 큼"
+    },
+    {
+      "asset_id": "HYUNDAI",
+      "relevance": "낮음",
+      "is_trap": false,
+      "reason": "이번 사건과 직접적인 관련이 낮음"
+    },
+    {
+      "asset_id": "GOLD_ETF",
+      "relevance": "낮음",
+      "is_trap": false,
+      "reason": "이번 사건과 직접적인 관련이 낮음"
+    }
+  ],
+
+  "traps": [
+    {
+      "trap_id": "TRAP_ACTION_CHASE",
+      "kind": "action",
+      "target": "높은 비중 또는 집중 보유 상태에서 추가 매수",
+      "explanation": "급등 직후 이미 많이 보유한 상태에서 추가로 매수하면 고점 추격매수 위험이 커진다."
+    },
+    {
+      "trap_id": "TRAP_FACTOR_FOMO",
+      "kind": "factor",
+      "target": "투자 심리",
+      "explanation": "남들이 매수한다는 심리만으로 판단하면 FOMO에 따른 추격매수에 빠질 수 있다."
+    },
+    {
+      "trap_id": "TRAP_ASSET_SURGE",
+      "kind": "asset",
+      "target": "TRAP_AI_SW",
+      "explanation": "큰 폭의 상승으로 눈에 띄지만 엔비디아 실적의 직접적인 수혜가 불분명하고 추격 위험이 가장 크다."
+    }
+  ],
+
+  "ai_baseline": {
+    "action_summary": "기존 보유분은 유지하거나 관망하고, 신규 진입은 소량·분산하며 급등 추격을 자제",
+    "rationale": "실적을 통해 AI 반도체 수요가 확인된 것은 긍정적이다. 그러나 관련 종목이 이미 급등했기 때문에 큰 비중으로 뒤늦게 진입하면 고점 매수 위험이 있다. 기존 보유분은 유지하되 신규 진입은 소량으로 제한하거나 조정을 기다리는 것이 적절하다."
+  },
+
+  "action_rule": {
+    "max_single_weight": 30,
+    "good_cash_min": 40,
+    "trap_assets": ["TRAP_AI_SW"],
+    "core_assets": ["SEMI_ETF"],
+    "expected_intensity": "매우 제한적/일부",
+    "expected_action_score": [-0.5, 1.0],
+    "note": "실적 호재는 확인됐지만 이미 급등한 직후다. 관망부터 일부 매수까지가 적정하며, 단일 종목 비중은 30% 이하로 제한하고 현금은 40% 이상 유지하는 것이 적절하다."
+  }
+}

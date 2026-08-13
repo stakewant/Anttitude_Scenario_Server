@@ -1,0 +1,153 @@
+{
+  "scenario_id": "semiconductor",
+  "turn_no": 5,
+  "turn_title": "단기 과열 논란, 변동성 확대",
+  "turn_context": "4턴 조정 이후 반도체가 다시 반등했으나 단기 급등으로 과열 논란이 커지고 변동성이 확대됐다. 밸류에이션 부담이 정점에 가까워진 상황이다. 외부 악재보다 내부 과열이 문제이므로 차익 실현과 비중 축소를 통해 위험을 관리할 국면이다.",
+
+  "questions_used": ["Q1", "Q29", "Q17", "Q15", "Q37", "Q39"],
+
+  "answer_rules": {
+    "Q1": {
+      "metric": "M1",
+      "good": ["가격 수준", "시장 수급", "투자 심리"],
+      "trap": ["실적", "재무상태"],
+      "note": "이번 턴의 핵심은 과열된 가격 수준과 시장 수급 및 투자 심리다. 기업 실적이나 재무 상태보다 주가가 단기간에 너무 많이 올랐다는 점을 우선적으로 봐야 한다."
+    },
+    "Q29": {
+      "metric": "M2",
+      "good": ["매우 고평가", "고평가"],
+      "trap": ["저평가", "매우 저평가"],
+      "note": "단기 급등으로 고평가 부담이 커진 상황이다. 현재 가격을 저평가로 판단하면 과열 상태를 놓친 것이다."
+    },
+    "Q17": {
+      "metric": "M3",
+      "good": ["보통", "높음"],
+      "trap": ["매우 낮음"],
+      "note": "과열과 변동성 확대가 단기간에 해소되지 않을 수 있다. 위험의 장기화 가능성을 매우 낮게 보면 낙관적으로 치우친 판단이다."
+    },
+    "Q15": {
+      "metric": "M3",
+      "good": ["큼"],
+      "trap": ["매우 작음"],
+      "note": "고평가와 변동성이 함께 커진 상태이므로 조정이 발생하면 손실 규모가 클 수 있다. 예상 손실을 매우 작게 보면 과열 위험을 과소평가한 것이다."
+    },
+    "Q37": {
+      "metric": "M4",
+      "good": ["보통", "낮음"],
+      "trap": ["매우 높음"],
+      "note": "과열과 변동성이 커진 국면에서 매우 높은 확신을 갖는 것은 위험하다. 불확실성을 인정하는 보통 또는 낮은 수준의 확신이 적절하다."
+    },
+    "Q39": {
+      "metric": "M5",
+      "type": "free",
+      "note": "과열과 고평가를 인식하고 일부 차익 실현이나 비중 축소로 연결하는 논리면 고득점. 과열을 무시하고 계속 보유하거나 추가 매수하는 판단, 공포에 따른 전량 매도는 감점."
+    }
+  },
+
+  "factors": [
+    {
+      "factor_id": "OVERVALUATION",
+      "importance": "상",
+      "direction": "악재",
+      "note": "단기 급등으로 커진 밸류에이션 부담이 이번 턴의 핵심 위험"
+    },
+    {
+      "factor_id": "VOLATILITY",
+      "importance": "상",
+      "direction": "악재",
+      "note": "변동성 확대에 따른 급락 및 손실 위험"
+    },
+    {
+      "factor_id": "PROFIT_TAKING",
+      "importance": "중",
+      "direction": "중립",
+      "note": "과열 국면에서 발생하는 차익 실현 수요와 적절한 대응 방향"
+    },
+    {
+      "factor_id": "HBM_DEMAND",
+      "importance": "중",
+      "direction": "호재",
+      "note": "반도체 펀더멘털이 유지돼 전량 매도를 막는 완화 요인"
+    },
+    {
+      "factor_id": "GREED_SENTIMENT",
+      "importance": "상관없음",
+      "direction": "중립",
+      "note": "주가가 계속 오를 것이라는 기대만으로 추가 매수하는 것은 합리적인 근거가 아님"
+    }
+  ],
+
+  "assets": [
+    {
+      "asset_id": "SK_HYNIX",
+      "relevance": "높음",
+      "is_trap": false,
+      "reason": "HBM 펀더멘털은 유지되지만 주가가 많이 올라 일부 차익 실현을 고려할 대상"
+    },
+    {
+      "asset_id": "SAMSUNG",
+      "relevance": "높음",
+      "is_trap": false,
+      "reason": "반도체 업종 과열에 따라 일부 차익 실현과 비중 조절을 고려할 대상"
+    },
+    {
+      "asset_id": "SEMI_ETF",
+      "relevance": "중간",
+      "is_trap": false,
+      "reason": "반도체 섹터 전반의 과열과 변동성에 노출된 자산"
+    },
+    {
+      "asset_id": "TRAP_AI_SW",
+      "relevance": "중간",
+      "is_trap": true,
+      "reason": "직접적인 펀더멘털보다 테마 기대감으로 과열됐지만 추가 상승 기대만으로 매수하기 쉬운 함정 종목"
+    },
+    {
+      "asset_id": "GOLD_ETF",
+      "relevance": "중간",
+      "is_trap": false,
+      "reason": "과열된 위험자산 비중을 줄일 때 일부 방어 자산으로 활용 가능"
+    },
+    {
+      "asset_id": "HYUNDAI",
+      "relevance": "낮음",
+      "is_trap": false,
+      "reason": "이번 사건과 직접적인 관련이 낮음"
+    }
+  ],
+
+  "traps": [
+    {
+      "trap_id": "TRAP_ACTION_HOLD_ALL",
+      "kind": "action",
+      "target": "과열을 무시한 전량 보유 또는 추가 매수",
+      "explanation": "고평가와 변동성이 확대된 국면에서 차익 실현 없이 계속 보유하거나 추가 매수하면 고점 매수 및 급락 위험이 커진다."
+    },
+    {
+      "trap_id": "TRAP_ACTION_PANIC",
+      "kind": "action",
+      "target": "전량 매도",
+      "explanation": "반도체 펀더멘털이 유지되는 상황에서 과열 논란만으로 전량 매도하는 것은 과도하다. 일부 차익 실현이 더 적절하다."
+    },
+    {
+      "trap_id": "TRAP_FACTOR_UNDERVALUE",
+      "kind": "factor",
+      "target": "현재 가격을 저평가로 판단",
+      "explanation": "단기간에 크게 오른 가격을 저평가 상태로 보면 이번 턴의 핵심인 과열과 밸류에이션 부담을 놓친 것이다."
+    }
+  ],
+
+  "ai_baseline": {
+    "action_summary": "일부 차익 실현으로 비중을 축소하고 현금을 확보하되 추가 매수와 전량 매도는 자제",
+    "rationale": "단기 과열로 밸류에이션 부담과 변동성이 커졌으므로 일부 차익 실현이 적절하다. 다만 HBM 수요 등 반도체 펀더멘털은 유지되고 있어 전량 매도는 과도하다. 일부 비중을 줄이고 현금을 확보해 추가 변동성에 대비하는 것이 균형적인 판단이다."
+  },
+
+  "action_rule": {
+    "max_single_weight": 25,
+    "good_cash_min": 45,
+    "trap_assets": ["TRAP_AI_SW"],
+    "core_assets": [],
+    "expected_action_score": [-2.0, -0.5],
+    "note": "단기 과열 국면이므로 일부 매도부터 매도까지가 적정하다. 추가 매수는 과열 위험을 무시한 행동이고 전량 매도는 펀더멘털을 무시한 과잉 대응이다. 단일 종목 비중은 25% 이하, 현금은 45% 이상이 적절하다."
+  }
+}
